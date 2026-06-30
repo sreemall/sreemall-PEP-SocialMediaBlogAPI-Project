@@ -1,5 +1,8 @@
 import Controller.SocialMediaController;
+import Util.ConnectionUtil;
 import io.javalin.Javalin;
+import java.sql.Connection;
+import Util.ConnectionUtil;
 
 /**
  * This class is provided with a main method to allow you to manually run and test your application. This class will not
@@ -7,6 +10,11 @@ import io.javalin.Javalin;
  */
 public class Main {
     public static void main(String[] args) {
+
+        //Connection conn = ConnectionUtil.getConnection();
+        ConnectionUtil.resetTestDatabase();
+
+
         SocialMediaController controller = new SocialMediaController();
         Javalin app = controller.startAPI();
         app.start(8080);

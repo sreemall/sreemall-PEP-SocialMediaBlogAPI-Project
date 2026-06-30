@@ -1,7 +1,10 @@
 package Controller;
 
+//import java.sql.Connection;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
+
+//import Util.ConnectionUtil;
 
 /**
  * TODO: You will need to write your own endpoints and handlers for your controller. The endpoints you will need can be
@@ -15,6 +18,9 @@ public class SocialMediaController {
      * @return a Javalin app object which defines the behavior of the Javalin controller.
      */
     public Javalin startAPI() {
+        //Connection conn = ConnectionUtil.getConnection ();
+        //ConnectionUtil.resetTestDatabase();
+
         Javalin app = Javalin.create();
         //app.get("example-endpoint", this::exampleHandler);
         app.post("/register", this::postRegisterUserHandler);
