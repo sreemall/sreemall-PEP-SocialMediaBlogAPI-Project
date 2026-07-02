@@ -30,10 +30,11 @@ public class MessageService {
     public Message addMessage(Message message) {
         String message_text = message.getMessage_text();
         if ((message_text != null) && (message_text.length() > 0) && (message_text.length() <= 255)) {
-            if (accountDAO.selectAccountById(message.getMessage_id()) != null) {
+            if (accountDAO.selectAccountById(message.getPosted_by()) != null) {
                 return messageDAO.insertMessage(message);
             }
         }
+
         return null;
     }
 
