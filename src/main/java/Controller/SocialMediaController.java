@@ -85,7 +85,7 @@ public class SocialMediaController {
             ctx.json (account);
         }
         else
-            ctx.status (400);
+            ctx.status (401);
     }
 
     private void postMessageHandler(Context ctx) throws JsonProcessingException {
