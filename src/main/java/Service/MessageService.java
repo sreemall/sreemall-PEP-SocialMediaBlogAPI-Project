@@ -34,7 +34,7 @@ public class MessageService {
                 return messageDAO.insertMessage(message);
             }
         }
-        
+
         return null;
     }
 
@@ -51,12 +51,14 @@ public class MessageService {
     public Message UpdateMessageTextById(int message_id, String message_text) {
         if ((message_text != null) && (message_text.length() > 0) && (message_text.length() <= 255)) {
             Message message = messageDAO.selectMessageByMesageId (message_id);
-            messageDAO.UpdateMessageTextById(message_id, message_text);
-            message.setMessage_text (message_text);
-            return message;
+            if (message != null) {
+                messageDAO.UpdateMessageTextById(message_id, message_text);
+                message.setMessage_text (message_text);
+                return message;
+            }
         }
-        else
-            return null;
+        
+        return null;
     }
 
     public List<Message> getAllMessagesByUser (int account_id) {
