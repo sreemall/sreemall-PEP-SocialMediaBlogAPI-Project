@@ -34,7 +34,7 @@ public class MessageService {
                 return messageDAO.insertMessage(message);
             }
         }
-        return messageDAO.insertMessage(message);
+        return null;
     }
 
     public Message deleteMessageById(int message_id) {
