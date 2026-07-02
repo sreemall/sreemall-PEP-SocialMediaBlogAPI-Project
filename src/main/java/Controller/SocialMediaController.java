@@ -5,6 +5,8 @@ import io.javalin.Javalin;
 import io.javalin.http.Context;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import static org.mockito.ArgumentMatchers.nullable;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 //import Util.ConnectionUtil;
@@ -104,7 +106,11 @@ public class SocialMediaController {
     }
 
     private void getMessageByIdHandler (Context ctx) {
-        ctx.json(messageService.getMessageById(Integer.parseInt(ctx.pathParam("message_id"))));
+        Message message = messageService.getMessageById(Integer.parseInt(ctx.pathParam("message_id")));
+        if (message != null)
+            ctx.json (message);
+        else
+            ctx.status(200);
     }
 
     private void deleteMessageByIdHandler (Context ctx) {
